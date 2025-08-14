@@ -95,7 +95,7 @@
         <h1>HI, welcome to the Todo App</h1>
         {% for todo in data %}
         <div class="todo-item">
-            <div class="todo-title">{{todo.title}}</div>
+            <div class="todo-title"><a href="details/{{todo.id}}">{{todo.title}}</a></div>
             <div class="todo-status" data-done="{{todo.isdone}}">{{todo.isdone}}</div>
         </div>
         {% endfor %}
