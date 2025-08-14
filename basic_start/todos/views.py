@@ -28,3 +28,26 @@ def addtodos(request):
         form = TodosForm()
         
         return render(request,'newtodo.html',context={"form":form})
+
+
+def detail(request,id):
+    todo = Todos.objects.get(id=id) #! ID is always unique
+
+    context = {
+        "todo":todo
+    }
+
+    return render(request,"detail.html",context)
+
+def deletetodo(request,id):
+    todo_remove = Todos.objects.get(id=id)
+    todo_remove.delete()
+
+    #? fetching data from SQLite
+    todos = Todos.objects.all()
+   
+    #? storing
+    context={
+        "data":todos
+    }
+    return render(request,'home.html',context=context)
