@@ -1,0 +1,12 @@
+{% extends "master.html"%}
+
+{% block title %} {{todo.title}} {%endblock%}
+
+{% block content %}
+<form  method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="👌add it!">
+</form>
+<a href="{% url 'homepage'%}">Go HOME</a>
+{% endblock %}

@@ -1,104 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo Home</title>
-    <style>
-        body {
-            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
-            font-family: 'Segoe UI', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        nav {
-            background: #b6c6e0;
-            padding: 1rem 0;
-            box-shadow: 0 2px 8px rgba(100, 120, 180, 0.08);
-        }
-        nav div {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: right;
-        }
-        nav a {
-            background: #7fa1e8;
-            color: #fff;
-            padding: 0.5rem 1.2rem;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background 0.2s;
-        }
-        nav a:hover {
-            background: #5c7bb0;
-        }
-        main {
-            max-width: 700px;
-            margin: 2rem auto;
-            background: rgba(255,255,255,0.85);
-            border-radius: 18px;
-            box-shadow: 0 4px 24px rgba(120, 160, 200, 0.10);
-            padding: 2rem;
-        }
-        h1 {
-            text-align: center;
-            font-weight: 600;
-            color: #4a6fa5;
-            margin-bottom: 2rem;
-            letter-spacing: 1px;
-        }
-        .todo-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #f3f7fa;
-            border-radius: 12px;
-            padding: 1rem 1.5rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 2px 8px rgba(180, 200, 220, 0.07);
-            transition: box-shadow 0.2s;
-        }
-        .todo-item:hover {
-            box-shadow: 0 4px 16px rgba(120, 160, 200, 0.13);
-        }
-        .todo-title {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: #3a4d6b;
-        }
-        .todo-status {
-            font-size: 0.95rem;
-            color: #6b8e7f;
-            background: #e0f7ef;
-            border-radius: 8px;
-            padding: 0.3rem 0.8rem;
-        }
-        .todo-status[data-done="True"] {
-            color: #3e8e41;
-            background: #d4f5dd;
-        }
-        .todo-status[data-done="False"] {
-            color: #b07d6b;
-            background: #fbeee0;
-        }
-    </style>
-</head>
-<body>
-    <nav>
-        <div>
-            <a href="/add">New Todo</a>
-        </div>
-    </nav>
-    <main>
-        <h1>HI, welcome to the Todo App</h1>
+{% extends "master.html" %}
+{% block title %}Todo Home {% endblock %}
+
+{% block content %}
+<h1>HI, welcome to the Todo App</h1>
         {% for todo in data %}
         <div class="todo-item">
-            <div class="todo-title"><a href="details/{{todo.id}}">{{todo.title}}</a></div>
+            <div class="todo-title"><a href="details/{{todo.id}}">{{todo.title}}</a>
+                <span><a href="update/{{todo.id}}" title="update todo">🆙</a></span></div>
             <div class="todo-status" data-done="{{todo.isdone}}">{{todo.isdone}}</div>
         </div>
         {% endfor %}
-    </main>
-</body>
-</html>
+{% endblock %}

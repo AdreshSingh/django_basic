@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Todos 📝</title>
-</head>
-<body>
-    <form action="/add" method="post">
+{% extends "master.html" %}
+    {%block title%}Add Todos 📝{%endblock%}
+
+    {%block content%}
+    <form method="post">
         {% csrf_token %}
         {{form}}
         <input type="submit" value="👌add it!">
     </form>
-</body>
-</html>
+    {%endblock%}
