@@ -51,3 +51,15 @@ def deletetodo(request,id):
         "data":todos
     }
     return render(request,'home.html',context=context)
+
+def updatetodo(request,id):
+    todo = Todos.objects.get(id=id)
+    if request.method == "POST":
+        form = TodosForm(request.POST,instance=todo)
+        if form.is_valid():
+            form.save()
+    else:
+        form=TodosForm(instance=todo)
+    
+    return render(request,"update.html",{"form":form,"todo":todo})
+    
